@@ -1,0 +1,42 @@
+## 激活对应的profile
+spring:
+  profiles:
+    active: "dev"
+
+server:
+#  配置发布路径
+  context-path: /echarts
+  session:
+    timeout: 1800
+    
+---
+
+#################################开发环境##########################
+# 配置服务端口
+server:
+  port: 8080
+spring:
+  profiles: dev
+# 日志管理
+logging:
+  level:
+    root: info
+    org.echarts.com: debug
+  path: logs/
+  file: myapp.log
+---
+
+#################################生产环境##########################
+# 配置服务端口
+server:
+  port: 8081
+spring:
+  profiles: prod
+# 日志管理
+logging:
+  level:
+    root: warn
+    org.echarts.com: debug
+  path: logs/
+  file: myapp.log
+  
